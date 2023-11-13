@@ -4,6 +4,20 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def incr_balance
+    @user = User.find(params[:id])
+    User.increment_counter(:balance, @user.id)
+
+    redirect_to user_path
+  end
+
+  def decr_balance
+    @user = User.find(params[:id])
+    User.decrement_counter(:balance, @user.id)
+
+    redirect_to user_path
+  end
+
   # GET /users/1 ...
   def show
   end

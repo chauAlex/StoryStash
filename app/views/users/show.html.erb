@@ -12,6 +12,9 @@
   <p>
     <strong>Balance:</strong>
     <%= current_user.balance %>
+    <%= button_to 'Add 1 To Balance', incr_balance_user_path(current_user.id), :method => :patch %>
+    <%= button_to 'Sub 1 From Balance', decr_balance_user_path(current_user.id), :method => :patch %>
   </p>
+  
 
 </div>
