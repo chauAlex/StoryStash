@@ -1,0 +1,29 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'bg-white rounded mb-6'}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%
+    label_classes = "block text-md mb-2 mt-4 #{alert ? "text-red-500" : "text-gray-700"}"
+    input_classes = "shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline #{alert ? "border-red-500" : nil}"
+  %>
+
+  <div class="mb-4">
+    <%= f.label :email, "Email", class: label_classes %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: input_classes, required: true  %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :password, "Password", class: label_classes %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: input_classes, required: true %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :password_confirmation, "Password Confirmation", class: label_classes %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: input_classes, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "w-full bg-blue-500 hover:bg-blue-700 text-white py-4 px-4 mt-2 mr-6 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+<% end %>
