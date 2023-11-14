@@ -13,15 +13,16 @@
 
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title , class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"%>
+
   </div>
 
   <div>
     <%= form.label :content, style: "display: block" %>
-    <%= form.text_field :content %>
+    <%= form.text_field :content, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit style: "cursor: pointer; margin-top: 10px", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
   </div>
 <% end %>
