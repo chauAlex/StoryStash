@@ -4,8 +4,6 @@
 
 <div>
   <% if user_signed_in? and current_user.id == @article.user_id %>
-    puts "User is signed in"
-    puts "User is: <%= current_user.id %>"
     <%= link_to "Edit this article", edit_article_path(@article) %> |
     <%= link_to "Back to articles", articles_path %>
 

@@ -1,20 +1,22 @@
-<div id="user <%= current_user.id %>">
-  <p>
-    <strong>ID:</strong>
-    <%= current_user.id %>
-  </p>
+<!-- Use current_user to access anything for the current session -->
+<div id="user <%= current_user.id %>" class="space-y-4">
+  <div class="p-4 bg-gray-100 rounded shadow">
+    <strong class="text-gray-700">ID:</strong>
+    <span class="ml-2 text-gray-600"><%= current_user.id %></span>
+  </div>
 
-  <p>
-    <strong>Email:</strong>
-    <%= current_user.email %>
-  </p>
+  <div class="p-4 bg-gray-100 rounded shadow">
+    <strong class="text-gray-700">Email:</strong>
+    <span class="ml-2 text-gray-600"><%= current_user.email %></span>
+  </div>
 
-  <p>
-    <strong>Balance:</strong>
-    <%= current_user.balance %>
-    <%= button_to 'Add 1 To Balance', incr_balance_user_path(current_user.id), :method => :patch %>
-    <%= button_to 'Sub 1 From Balance', decr_balance_user_path(current_user.id), :method => :patch %>
-  </p>
-  
+  <div class="p-4 bg-gray-100 rounded shadow">
+    <strong class="text-gray-700">Balance:</strong>
+    <span class="ml-2 text-gray-600"><%= current_user.balance %></span>
+  </div>
 
+  <div class="space-y-4 mt-4">
+    <%= button_to 'Add 1 To Balance', incr_balance_user_path(current_user.id), method: :patch, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+    <%= button_to 'Sub 1 From Balance', decr_balance_user_path(current_user.id), method: :patch, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+  </div>
 </div>
