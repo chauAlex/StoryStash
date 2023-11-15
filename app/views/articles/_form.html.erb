@@ -1,3 +1,4 @@
+<div class="container mx-auto mt-8 flex-grow">
 <%= form_with(model: article) do |form| %>
   <% if article.errors.any? %>
     <div style="color: red">
@@ -26,3 +27,4 @@
     <%= form.submit style: "cursor: pointer; margin-top: 10px", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
   </div>
 <% end %>
+</div>

@@ -2,6 +2,23 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
 
+  def like
+    @article = Article.find(params[:id])
+    @like = current_user.likes.build(article_id: params[:id])
+    if @like.save
+      redirect_to @article, notice: 'You liked this article!'
+    else
+      redirect_to @article, notice: 'Error liking post.'
+    end
+  end
+
+  def unlike
+    @article = Article.find(params[:id])
+    @like = current_user.likes.find_by(article_id: params[:id])
+    @like.destroy if @like
+    redirect_to @article, notice: 'You unliked this article!'
+  end
+
   # GET /articles or /articles.json
   def index
     @articles = Article.all

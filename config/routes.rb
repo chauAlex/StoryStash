@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :articles do
+    member do
+      post 'like'
+      delete 'unlike'
+    end
+  end
+  
   resources :articles do 
     resources :comments
   end 
+  
   resources :users do
     member { patch 'incr_balance' }
     member { patch 'decr_balance' }

@@ -1,16 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @article %>
 
-<div>
-  <% if user_signed_in? and current_user.id == @article.user_id %>
-    <%= link_to "Edit this article", edit_article_path(@article) %> |
-    <%= link_to "Back to articles", articles_path %>
+<div class="container mx-auto mt-8 flex-grow">
+  <%= render @article %>
 
-    <%= button_to "Destroy this article", @article, method: :delete %>
-  <% else %>
-    <%= link_to "Back to articles", articles_path %>
-  <% end %>
+  <div>
+    <% if user_signed_in? and current_user.id == @article.user_id %>
+
+      <%= link_to "Edit this article", edit_article_path(@article) %> |
+      <%= link_to "Back to articles", articles_path %>
+
+      <%= button_to "Destroy this article", @article, method: :delete %>
+    <% else %>
+      <%= link_to "Back to articles", articles_path %>
+    <% end %>
+    <p>Likes: <%= @article.likes.size %></p>
+    <% if user_signed_in? %>
+      <% if !current_user.likes.exists?(user_id: current_user.id, article_id: @article.id) %>
+        <%= button_to "Like", like_article_path(@article), method: :post %>
+      <% else %>
+        <%= button_to "Unlike", unlike_article_path(@article), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <h2>All Comments</h2>
