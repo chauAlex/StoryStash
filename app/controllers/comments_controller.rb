@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :set_comment, only: %i[ show edit update destroy ]
+    before_action :set_comment, only: %i[ show edit destroy ]
     before_action :authenticate_user!, except: [:index, :show]
   
     def index
@@ -7,10 +7,10 @@ class CommentsController < ApplicationController
     end
   
     def show
-        if params.key?(:article_id)
-            @article = Article.find(params[:article_id])
-        end
-        @comment = Comment.find(params[:id])
+      if params.key?(:article_id)
+          @article = Article.find(params[:article_id])
+      end
+      @comment = Comment.find(params[:id])
     end
   
     def new
@@ -22,18 +22,19 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @article = Article.find(params[:article_id])
-        @comment = Comment.new(comment_params)
-    
-        respond_to do |format|
-          if @comment.save
-            format.html { redirect_to article_comment_url(@article, @comment), notice: "Comment was successfully created." }
-            format.json { render :show, status: :created, location: @comment }
-          else
-            format.html { render :new, status: :unprocessable_entity }
-            format.json { render json: @comment.errors, status: :unprocessable_entity }
-          end
+      @article = Article.find(params[:article_id])
+      @comment = Comment.new(comment_params)
+      @comment.user = current_user
+  
+      respond_to do |format|
+        if @comment.save
+          format.html { redirect_to article_comment_url(@article, @comment), notice: "Comment was successfully created." }
+          format.json { render :show, status: :created, location: @comment }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
+      end
     end
 
     def destroy

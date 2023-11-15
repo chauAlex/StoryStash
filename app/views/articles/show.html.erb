@@ -19,23 +19,11 @@
     <li>
       <p>
         <strong>User's email:</strong>
-        <%= comment.email %>
+        <%= comment.user.email %>
       </p>
       <p>
         <strong>Comment Content:</strong>
         <%= comment.content %>
-      </p>
-      <p>
-        <!-- <%= link_to "Show this comment", article_comment_path(@article, comment) %> -->
-        <!-- <%= link_to "Show this comment", comment %> -->
-
-
-        <% if defined?(@user) %>
-          <%= link_to "Show this comment", user_article_comment_path(@user, @article, comment) %>
-        <% else %>
-          <%= link_to "Show this comment", artice_comment_path(@article, comment) %>
-        <% end %>
-
       </p>
     </li>
   <% end %>
