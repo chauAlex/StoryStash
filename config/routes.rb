@@ -7,11 +7,6 @@ Rails.application.routes.draw do
     member { patch 'incr_balance' }
     member { patch 'decr_balance' }
   end
-  resources :users do
-    resources :articles do
-      resources :comments
-    end
-  end
   
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
