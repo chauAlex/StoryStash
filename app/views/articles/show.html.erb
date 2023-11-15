@@ -18,8 +18,8 @@
   <% @article.comments.each do |comment| %>
     <li>
       <p>
-        <strong>Username:</strong>
-        <%= comment.username %>
+        <strong>User's email:</strong>
+        <%= comment.email %>
       </p>
       <p>
         <strong>Comment Content:</strong>
@@ -40,8 +40,6 @@
     </li>
   <% end %>
 </ul>
-
-<h2>Post Comments</h2>
 
 <% if defined?(@user) %>
   <%= link_to "New Comment", new_user_article_comment_path(@user, @article) %>
