@@ -12,3 +12,25 @@
     <%= link_to "Back to articles", articles_path %>
   <% end %>
 </div>
+
+<h2>All Comments</h2>
+<ul>
+  <% @article.comments.each do |comment| %>
+    <li>
+      <p>
+        <strong>User's email:</strong>
+        <%= comment.user.email %>
+      </p>
+      <p>
+        <strong>Comment Content:</strong>
+        <%= comment.content %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<% if defined?(@user) %>
+  <%= link_to "New Comment", new_user_article_comment_path(@user, @article) %>
+<% else %>
+  <%= link_to "New Comment", new_article_comment_path(@article) %>
+<% end %>
