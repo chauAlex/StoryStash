@@ -1,4 +1,4 @@
-<%= form_with(model: transaction) do |form| %>
+<%= form_with(model: [@article, transaction], local: true) do |form| %>
   <% if transaction.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
@@ -12,26 +12,10 @@
   <% end %>
 
   <div>
-    <%= form.label :trans_id, style: "display: block" %>
-    <%= form.text_field :trans_id %>
+    <%= form.hidden_field :article_id, value: @article.id %>
   </div>
-
+  
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :article_id, style: "display: block" %>
-    <%= form.text_field :article_id %>
-  </div>
-
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.number_field :amount %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit 'Pay' %>
   </div>
 <% end %>
