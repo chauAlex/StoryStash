@@ -14,6 +14,7 @@
         <%= render article %>
         <p>
           <%= link_to "Show this article", article %>
+          <%= link_to "Pay", new_article_transaction_path(article) %>
         </p>
         </div>
       <% end %>

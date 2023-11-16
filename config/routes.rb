@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transactions
   devise_for :users
   resources :articles do
     member do
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   
   resources :articles do 
     resources :comments
+    resources :transactions
   end 
   
   resources :users do
