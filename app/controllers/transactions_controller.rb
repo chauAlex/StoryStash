@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  before_action :authenticate_user!, except: [:new]
   # GET /transactions or /transactions.json
   def index
     # @article = Article.find(params[:article_id])
