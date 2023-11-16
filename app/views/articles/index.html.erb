@@ -13,8 +13,12 @@
         <div class="bg-white my-2 p-6 rounded-lg shadow-md overflow-hidden">
         <%= render article %>
         <p>
-          <%= link_to "Show this article", article %>
-          <%= link_to "Pay", new_article_transaction_path(article) %>
+          <% paid = Transaction.find_by(user_id: current_user.id, article_id: article.id) %>
+          <% if current_user.id != article.user_id && article.price != 0 && !paid %>
+            <%= link_to "Pay", new_article_transaction_path(article) %>
+          <% else %>
+            <%= link_to "Show this article", article %>
+          <% end %>
         </p>
         </div>
       <% end %>
