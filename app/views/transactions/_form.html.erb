@@ -1,0 +1,21 @@
+<%= form_with(model: [@article, transaction], local: true) do |form| %>
+  <% if transaction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% transaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.hidden_field :article_id, value: @article.id %>
+  </div>
+  
+  <div>
+    <%= form.submit 'Pay' %>
+  </div>
+<% end %>

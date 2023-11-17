@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # resources :transactions
   devise_for :users
   resources :articles do
     member do
@@ -6,16 +7,17 @@ Rails.application.routes.draw do
       delete 'unlike'
     end
   end
-  
-  resources :articles do 
+
+  resources :articles do
     resources :comments
-  end 
-  
+    resources :transactions
+  end
+
   resources :users do
     member { patch 'incr_balance' }
     member { patch 'decr_balance' }
   end
-  
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

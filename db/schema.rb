@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_14_233332) do
+
+ActiveRecord::Schema[7.1].define(version: 2023_11_15_235042) do
+
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.string "content"
     t.integer "user_id", null: false
+    t.integer "price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
@@ -28,6 +31,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_233332) do
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "article_id", null: false
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_transactions_on_article_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -58,4 +71,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_14_233332) do
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "articles"
   add_foreign_key "likes", "users"
+  add_foreign_key "transactions", "articles"
+  add_foreign_key "transactions", "users"
 end

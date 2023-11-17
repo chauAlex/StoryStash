@@ -11,6 +11,7 @@ Like.delete_all
 Comment.delete_all
 Article.delete_all
 User.delete_all
+Transaction.delete_all
 
 # All users have 'password' as their password
 
@@ -40,9 +41,10 @@ u3 = User.create!(email: "test3@test.com", username: "user3", reset_password_tok
 
 p "Created 3 users"
 
-a1 = Article.create!(title: "Article 1", content: "Article 1 content", user_id: u1.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
-a2 = Article.create!(title: "Article 2", content: "Article 2 content", user_id: u2.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
-a3 = Article.create!(title: "Article 3", content: "Article 3 content", user_id: u3.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a1 = Article.create!(title: "Article 1", content: "Article 1 content", price: 3, user_id: u1.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a2 = Article.create!(title: "Article 2", content: "Article 2 content", price: 4, user_id: u2.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a3 = Article.create!(title: "Article 3", content: "Article 3 content", price: 5, user_id: u3.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a4 = Article.create!(title: "Article 4", content: "Article 4 content", price: 0, user_id: u3.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
 
 p "Created 3 articles"
 
