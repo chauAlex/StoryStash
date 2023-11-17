@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'bg-white rounded mb-6'}) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'bg-white rounded mb-6 flex-grow'}) do |f| %>
   <%
     label_classes = "block text-md mb-2 mt-4 #{alert ? "text-red-500" : "text-gray-700"}"
     input_classes = "shadow appearance-none border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline #{alert ? "border-red-500" : nil}"

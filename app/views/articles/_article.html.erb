@@ -9,14 +9,16 @@
     <%= article.user_id %>
   </p>
 
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
+  <% if !simple %>
+    <p>
+      <strong>Content:</strong>
+      <%= article.content %>
+    </p>
+  <% end %>
 
   <p>
     <strong>Price:</strong>
-    <%= article.price %>
+    <%= "$#{article.price}" %>
   </p>
 
 
