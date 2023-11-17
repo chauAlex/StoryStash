@@ -1,13 +1,12 @@
-<h1>New comment</h1>
+<div class="container mx-auto mt-8 flex-grow">
+  <h1 class="text-4xl font-bold my-2 text-lg">New comment</h1>
 
-<%= render "form", comment: @comment %>
+  <%= render "form", comment: @comment %>
 
-<br>
+  <br>
 
-
-<div>
-  <%= link_to "Back to this article", article_path(@article) %>
+  <div>
+    <%= link_to "Back to article", article_path(@article), class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
 </div>
-
-<br>
 

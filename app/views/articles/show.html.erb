@@ -37,24 +37,27 @@
   </div>
 </div>
 
-<h2>All Comments</h2>
-<ul>
-  <% @article.comments.each do |comment| %>
-    <li>
-      <p>
-        <strong>User's email:</strong>
-        <%= comment.user.email %>
-      </p>
-      <p>
-        <strong>Comment Content:</strong>
-        <%= comment.content %>
-      </p>
-    </li>
-  <% end %>
-</ul>
+<hr style="border: 1px solid #ddd; margin: 20px 0 0 0;">
 
-<% if defined?(@user) %>
-  <%= link_to "New Comment", new_user_article_comment_path(@user, @article) %>
-<% else %>
-  <%= link_to "New Comment", new_article_comment_path(@article) %>
-<% end %>
+<div class="container mx-auto mt-8 flex-grow">
+  <div class="container mt-4">
+    <h2 class="text-4xl font-bold my-2 text-lg">All Comments</h2>
+  </div>
+  <ul style="list-style-type: none; padding: 0;">
+    <% @article.comments.each do |comment| %>
+      <li style="border-bottom: 1px solid #ddd; padding: 10px; margin: 0;">
+        <p>
+          <strong>User:</strong>
+          <%= comment.user.email %>
+        </p>
+        <p>
+          <strong>Comment:</strong>
+          <%= comment.content %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+  <div class="my-2">
+    <%= link_to "New Comment", new_article_comment_path(@article), class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" %>
+  </div>
+</div>
