@@ -12,13 +12,13 @@
       <% @articles.each do |article| %>
         <% if article.price == 0 || user_signed_in? %>
         <div class="bg-white my-2 p-6 rounded-lg shadow-md overflow-hidden">
-        <%= render article %>
-        <p>
+        <%= render article, simple: true %>
+        <p class="mt-2">
           <%# paid = Transaction.find_by(user_id: current_user.id, article_id: article.id) %>
           <% if user_signed_in? && current_user.id != article.user_id && article.price != 0 && !Transaction.find_by(user_id: current_user.id, article_id: article.id) %>
-            <%= link_to "Pay", new_article_transaction_path(article) %>
+            <%= link_to "Pay", new_article_transaction_path(article), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
           <% else %>
-            <%= link_to "Show this article", article %>
+            <%= link_to "Show this article", article, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
           <% end %>
         </p>
         </div>
