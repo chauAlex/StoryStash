@@ -1,27 +1,28 @@
-<%= form_with(model: [@article, comment], local: true) do |form| %>
-    <% if comment.errors.any? %>
-      <div style="color: red">
-        <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-  
-        <ul>
-          <% comment.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
+<div class="container mx-auto mt-8 flex-grow">
+  <%= form_with(model: [@article, comment], local: true) do |form| %>
+      <% if comment.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+    
+          <ul>
+            <% comment.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div>
+        <%= form.hidden_field :article_id, value: @article.id %>
+      </div>
+    
+      <div>
+        <%= form.label :content, style: "display: block" %>
+        <%= form.text_area :content, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      </div>
+    
+      <div>
+        <%= form.submit style: "cursor: pointer; margin-top: 10px", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
       </div>
     <% end %>
-    
-    
-    <div>
-      <%= form.hidden_field :article_id, value: @article.id %>
-    </div>
-  
-    <div>
-      <%= form.label :content, style: "display: block" %>
-      <%= form.text_area :content, class: "shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    </div>
-  
-    <div>
-      <%= form.submit style: "cursor: pointer; margin-top: 10px", class:"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"%>
-    </div>
-  <% end %>
+</div>
