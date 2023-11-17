@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+
+.input-width {
+    width: 300px; /* set width of input field */
+}
+
+.btn-width {
+    display: flex;
+    width: 190px; /* set width of button */
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Optional: Set a specific height if needed */
+}
+  

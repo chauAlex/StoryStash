@@ -21,17 +21,17 @@
     <% end %>
     <% if user_signed_in? and current_user.id == @article.user_id %>
       <div class="my-2">
-        <%= link_to "Edit this article", edit_article_path(@article), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" %>
+        <%= link_to "Edit this article", edit_article_path(@article), class: "bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded btn-width" %>
       </div>
       <div class="my-2">
-        <%= button_to "Destroy this article", @article, method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+        <%= button_to "Destroy this article", @article, method: :delete, class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded btn-width" %>
       </div>
       <div class="my-2">
-        <%= link_to "Back to articles", articles_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+        <%= link_to "Back to articles", articles_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded btn-width" %>
       </div>
     <% else %>
       <div class="my-2">
-        <%= link_to "Back to articles", articles_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+        <%= link_to "Back to articles", articles_path, class: "bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded btn-width" %>
       </div>
     <% end %>
   </div>
@@ -58,6 +58,6 @@
     <% end %>
   </ul>
   <div class="my-2">
-    <%= link_to "New Comment", new_article_comment_path(@article), class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" %>
+    <%= link_to "New Comment", new_article_comment_path(@article), class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded btn-width" %>
   </div>
 </div>
