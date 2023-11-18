@@ -21,7 +21,15 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    session[:sort] = params[:sort] if params[:sort].present?
+    @articles = case session[:sort]
+    when 'likes'
+      Article.order(likes_count: :desc)
+    when 'latest'
+      Article.order(created_at: :desc)
+    else
+      Article.all
+    end
   end
 
   # GET /articles/1 or /articles/1.json

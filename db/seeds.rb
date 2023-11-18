@@ -41,18 +41,19 @@ u3 = User.create!(email: "test3@test.com", username: "user3", reset_password_tok
 
 p "Created 3 users"
 
-a1 = Article.create!(title: "Article 1", content: "Article 1 content", price: 3, user_id: u1.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
-a2 = Article.create!(title: "Article 2", content: "Article 2 content", price: 4, user_id: u2.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
-a3 = Article.create!(title: "Article 3", content: "Article 3 content", price: 5, user_id: u3.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
-a4 = Article.create!(title: "Article 4", content: "Article 4 content", price: 0, user_id: u3.id, created_at: "2023-11-14 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a1 = Article.create!(title: "Article 1", content: "Article 1 content", price: 3, user_id: u1.id, created_at: "2023-11-01 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a2 = Article.create!(title: "Article 2", content: "Article 2 content", price: 4, user_id: u2.id, created_at: "2023-11-02 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a3 = Article.create!(title: "Article 3", content: "Article 3 content", price: 5, user_id: u3.id, created_at: "2023-11-03 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+a4 = Article.create!(title: "Article 4", content: "Article 4 content", price: 0, user_id: u3.id, created_at: "2023-11-04 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
 
-p "Created 3 articles"
+p "Created 4 articles"
 
 l1 = Like.create!(user_id: u1.id, article_id: a3.id)
 l2 = Like.create!(user_id: u2.id, article_id: a1.id)
 l3 = Like.create!(user_id: u3.id, article_id: a2.id)
+l4 = Like.create!(user_id: u2.id, article_id: a3.id)
 
-p "Created 3 likes"
+p "Created 4 likes"
 
 c1 = Comment.create!(article_id: a2.id, user_id: u1.id, content: "comment by test user")
 c2 = Comment.create!(article_id: a1.id, user_id: u2.id, content: "test comment111")
