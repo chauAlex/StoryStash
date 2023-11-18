@@ -5,18 +5,30 @@ class ArticlesController < ApplicationController
   def like
     @article = Article.find(params[:id])
     @like = current_user.likes.build(article_id: params[:id])
-    if @like.save
-      redirect_to @article, notice: 'You liked this article!'
-    else
-      redirect_to @article, notice: 'Error liking post.'
+    @author = @article.user;
+
+    ActiveRecord::Base.transaction do
+      if @like.save
+        @author.update(balance: @author.balance + 1)
+        redirect_to @article, notice: 'You liked this article!'
+      else
+        redirect_to @article, notice: 'Error liking post.'
+        raise ActiveRecord::Rollback
+      end
     end
+
   end
 
   def unlike
     @article = Article.find(params[:id])
     @like = current_user.likes.find_by(article_id: params[:id])
-    @like.destroy if @like
-    redirect_to @article, notice: 'You unliked this article!'
+    @author = @article.user
+
+    ActiveRecord::Base.transaction do
+      @like.destroy if @like
+      @author.update(balance: @author.balance - 1)
+      redirect_to @article, notice: 'You unliked this article!'
+    end
   end
 
   # GET /articles or /articles.json
