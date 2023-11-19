@@ -21,7 +21,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    session[:sort] = params[:sort] if params[:sort].present?
+    if params[:sort].present?
+      session[:sort] = params[:sort]
+    elsif !session[:sort].present?
+      session[:sort] = 'likes'
+    end
     @articles = case session[:sort]
     when 'likes'
       Article.order(likes_count: :desc)
