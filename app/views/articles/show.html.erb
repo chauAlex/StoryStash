@@ -6,7 +6,7 @@
   <%= render @article, simple: false %>
 
   <div class="space-y-4">
-    <p>Likes: <%= @article.likes.size %></p>
+    <p>Likes: <%= @article.likes_count %></p>
     <% if user_signed_in? %>
       <div class="my-2">
         <% if !current_user.likes.exists?(user_id: current_user.id, article_id: @article.id) %>

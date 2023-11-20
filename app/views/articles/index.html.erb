@@ -5,8 +5,13 @@
 
 <div class="container mx-auto mt-8 flex-grow">
   <h1 class="text-4xl font-bold my-2">Articles</h1>
-  <%= link_to "New article", new_article_path, class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded btn-width" %>
-
+  <div class="my-4 flex justify-between items-center">
+    <%= link_to "New article", new_article_path, class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded btn-width" %>
+    <%= form_with(url: articles_path, method: :get, local: true) do |form| %>
+      <%= form.label :sort, "Sort by:", class: "mr-2" %>
+      <%= form.select :sort, options_for_select([['Likes', 'likes'], ['Latest', 'latest']], session[:sort]), {}, onchange: 'this.form.submit();', class: "w-64 mt-1 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
+    <% end %>
+  </div>
 
     <div id="articles" class="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4">
       <% @articles.each do |article| %>
