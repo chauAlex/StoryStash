@@ -13,8 +13,10 @@ class UsersController < ApplicationController
 
   def decr_balance
     @user = User.find(params[:id])
-    User.decrement_counter(:balance, @user.id)
-
+    # don't let the balance less than 0
+    if @user.balance > 0
+      User.decrement_counter(:balance, @user.id)
+    end
     redirect_to user_path
   end
 
