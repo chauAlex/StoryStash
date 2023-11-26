@@ -46,6 +46,7 @@ gem "bootsnap", require: false
 
 # My gems
 gem 'devise', '~> 4.9', '>= 4.9.3'
+gem 'kaminari'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
