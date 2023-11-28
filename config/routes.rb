@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users do
     member { patch 'incr_balance' }
     member { patch 'decr_balance' }
+    member { delete 'destroy_user'}
   end
 
 

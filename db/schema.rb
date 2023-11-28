@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_18_225521) do
     t.string "title"
     t.string "content"
     t.integer "user_id", null: false
+    t.integer "price", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price"
     t.integer "likes_count", default: 0, null: false
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
