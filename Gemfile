@@ -69,4 +69,4 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "pg", "~> 1.3.0"
+gem "pg", "~> 1.1.0"
