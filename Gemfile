@@ -46,6 +46,11 @@ gem "bootsnap", require: false
 
 # My gems
 gem 'devise', '~> 4.9', '>= 4.9.3'
+gem "bigdecimal", '3.1.4'
+gem 'psych', '~> 5.1', '>= 5.1.1.1'
+gem 'bcrypt', '~> 3.1', '>= 3.1.19'
+gem 'msgpack', '~> 1.7', '>= 1.7.2'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
