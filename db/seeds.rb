@@ -48,6 +48,14 @@ a4 = Article.create!(title: "Article 4", content: "Article 4 content", price: 0,
 
 p "Created 4 articles"
 
+40.times do
+    #generate a random number from 1 to 1000
+    randNum = rand(1..1000)
+    Article.create!(title: "Article #{randNum}", content: "Article #{randNum} content", price: 0, user_id: u3.id, created_at: "2023-11-04 22:27:04.475897", updated_at: "2023-11-14 22:27:04.475897")
+end
+
+p "Created 40 more articles"
+
 l1 = Like.create!(user_id: u1.id, article_id: a3.id)
 l2 = Like.create!(user_id: u2.id, article_id: a1.id)
 l3 = Like.create!(user_id: u3.id, article_id: a2.id)

@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     resources :transactions
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :articles, only: [:destroy]
+    end
+  end
+
   resources :users do
     member { patch 'incr_balance' }
     member { patch 'decr_balance' }
