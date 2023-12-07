@@ -12,6 +12,17 @@ module Api
           render json: { status: 'ERROR', message: 'Article not deleted', data: @article.errors }, status: :unprocessable_entity
         end
       end
+
+      def deleteAll
+        begin
+          Article.transaction do
+            Article.find_each(&:destroy!)
+          end
+          render json: { status: 'SUCCESS', message: 'Deleted all articles' }, status: :ok
+        rescue => e
+          render json: { status: 'ERROR', message: 'Failed to delete all articles', data: e.message }, status: :unprocessable_entity
+        end
+      end
     end
   end
 end

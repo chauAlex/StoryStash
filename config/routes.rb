@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      delete '/articles/deleteAll', to: 'articles#deleteAll'
       resources :articles, only: [:destroy]
     end
   end
