@@ -40,11 +40,11 @@ class ArticlesController < ApplicationController
     end
     @articles = case session[:sort]
     when 'likes'
-      Article.order(likes_count: :desc).page(params[:page])
+      Article.order(likes_count: :desc)
     when 'latest'
-      Article.order(created_at: :desc).page(params[:page])
+      Article.order(created_at: :desc)
     else
-      Article.all.page(params[:page]) #shouldn't happen, but just in case
+      Article.all #shouldn't happen, but just in case
     end
   end
 
