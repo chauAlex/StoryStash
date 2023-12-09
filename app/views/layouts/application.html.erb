@@ -12,10 +12,14 @@
   </head>
 
   <body class="bg-slate-100 flex flex-col min-h-screen">
-    <%= render 'layouts/navbar' %>
+    <% cache ['header', user_signed_in?] do %>
+      <%= render 'layouts/navbar' %>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= render 'layouts/footer' %>
+    <% cache 'footer' do %>
+      <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>
