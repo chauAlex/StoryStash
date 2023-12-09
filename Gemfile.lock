@@ -96,6 +96,7 @@ GEM
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
     crass (1.0.6)
+    dalli (3.2.6)
     date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -275,6 +276,7 @@ DEPENDENCIES
   bigdecimal (= 3.1.4)
   bootsnap
   capybara
+  dalli
   debug
   devise (~> 4.9, >= 4.9.3)
   importmap-rails

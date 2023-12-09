@@ -47,6 +47,7 @@ gem "bootsnap", require: false
 # My gems
 gem 'devise', '~> 4.9', '>= 4.9.3'
 gem 'kaminari'
+gem 'dalli'
 gem "bigdecimal", '3.1.4'
 gem 'psych', '~> 5.1', '>= 5.1.1.1'
 gem 'bcrypt', '~> 3.1', '>= 3.1.19'
