@@ -12,24 +12,28 @@
       <%= form.select :sort, options_for_select([['Likes', 'likes'], ['Latest', 'latest']], session[:sort]), {}, onchange: 'this.form.submit();', class: "w-64 mt-1 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
     <% end %>
   </div>
-
-    <div id="articles" class="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4">
-      <% @articles.each do |article| %>
-        <% if article.price == 0 || user_signed_in? %>
-        <div class="bg-white my-2 p-6 rounded-lg shadow-md overflow-hidden">
-        <%= render article, simple: true %>
-        <p class="mt-2">
-          <%# paid = Transaction.find_by(user_id: current_user.id, article_id: article.id) %>
-          <% if user_signed_in? && current_user.id != article.user_id && article.price != 0 && !Transaction.find_by(user_id: current_user.id, article_id: article.id) %>
-            <%= link_to "Pay", new_article_transaction_path(article), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-          <% else %>
-            <%= link_to "Show this article", article, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded height: 40px;" %>
+    <% cache_key = "article-listing/#{@articles.maximum(:updated_at).to_i}" %>
+    <% cache(cache_key) do %>
+      <div id="articles" class="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4">
+        <% @articles.each do |article| %>
+          <% if article.price == 0 || user_signed_in? %>
+          <div class="bg-white my-2 p-6 rounded-lg shadow-md overflow-hidden">
+          <% cache article do %>
+            <%= render article, simple: true %>
           <% end %>
-        </p>
-        </div>
+          <p class="mt-2">
+            <%# paid = Transaction.find_by(user_id: current_user.id, article_id: article.id) %>
+            <% if user_signed_in? && current_user.id != article.user_id && article.price != 0 && !Transaction.find_by(user_id: current_user.id, article_id: article.id) %>
+              <%= link_to "Pay", new_article_transaction_path(article), class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+            <% else %>
+              <%= link_to "Show this article", article, class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded height: 40px;" %>
+            <% end %>
+          </p>
+          </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
     <div class="flex justify-center items-center space-y-4 py-8">
       <% if user_signed_in? %>
         <%= paginate @articles %>
