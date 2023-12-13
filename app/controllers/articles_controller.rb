@@ -40,16 +40,18 @@ class ArticlesController < ApplicationController
     end
     @articles = case session[:sort]
     when 'likes'
-      Article.order(likes_count: :desc).page(params[:page])
+      Article.includes(comments: :user).order(likes_count: :desc).page(params[:page])
     when 'latest'
-      Article.order(created_at: :desc).page(params[:page])
+      Article.includes(comments: :user).order(created_at: :desc).page(params[:page])
     else
-      Article.all.page(params[:page]) #shouldn't happen, but just in case
+      Article.includes(comments: :user).all.page(params[:page]) #shouldn't happen, but just in case
     end
   end
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find(params[:id])
+    @comments = @article.comments.includes(:user)
   end
 
   # GET /articles/new

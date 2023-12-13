@@ -3,14 +3,12 @@ class CommentsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
   
     def index
-      @comments = Comment.all
+      @comments = Comment.includes(:user)
     end
   
     def show
-      if params.key?(:article_id)
-          @article = Article.find(params[:article_id])
-      end
-      @comment = Comment.find(params[:id])
+      @article = Article.find(params[:article_id])
+      @comment = @article.comments
     end
   
     def new
