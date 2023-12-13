@@ -56,12 +56,12 @@ end
 
 p "Created 1500 more articles"
 
-l1 = Like.create!(user_id: u1.id, article_id: a3.id)
-l2 = Like.create!(user_id: u2.id, article_id: a1.id)
-l3 = Like.create!(user_id: u3.id, article_id: a2.id)
-l4 = Like.create!(user_id: u2.id, article_id: a3.id)
+# l1 = Like.create!(user_id: u1.id, article_id: a3.id)
+# l2 = Like.create!(user_id: u2.id, article_id: a1.id)
+# l3 = Like.create!(user_id: u3.id, article_id: a2.id)
+# l4 = Like.create!(user_id: u2.id, article_id: a3.id)
 
-p "Created 4 likes"
+# p "Created 4 likes"
 
 c1 = Comment.create!(article_id: a2.id, user_id: u1.id, content: "comment by test user")
 c2 = Comment.create!(article_id: a1.id, user_id: u2.id, content: "test comment111")

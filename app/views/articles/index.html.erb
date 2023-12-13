@@ -12,8 +12,6 @@
       <%= form.select :sort, options_for_select([['Likes', 'likes'], ['Latest', 'latest']], session[:sort]), {}, onchange: 'this.form.submit();', class: "w-64 mt-1 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md" %>
     <% end %>
   </div>
-    <% cache_key = "article-listing/#{@articles.current_page}/#{@articles.maximum(:updated_at).to_i}" %>
-    <% cache(cache_key) do %>
       <div id="articles" class="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4">
         <% @articles.each do |article| %>
           <% if article.price == 0 || user_signed_in? %>
@@ -33,7 +31,6 @@
           <% end %>
         <% end %>
       </div>
-    <% end %>
     <div class="flex justify-center items-center space-y-4 py-8">
       <% if user_signed_in? %>
         <%= paginate @articles %>
